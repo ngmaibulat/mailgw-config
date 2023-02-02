@@ -14,6 +14,8 @@ bash scripts/02-node.sh
 bash scripts/03-gen-config.sh
 bash scripts/04-pull-image.sh
 bash scripts/05-run-container.sh
+bash scripts/06-dnat.sh
+bash scripts/07-test.sh
 ```
 
 ### Test
@@ -21,6 +23,6 @@ bash scripts/05-run-container.sh
 From `another` host
 
 ```bash
-nc -vz host 25
+nc -vz host 2525
 swaks -s host -f addr@domain -t addr@domain
 ```
