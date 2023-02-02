@@ -19,4 +19,3 @@ genConfigs()
 
 //show help
 helpGenJson()
-helpContainers()
