@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import isFile from '@aibulat/isFile';
+import isFile from '@aibulat/isfile';
 import chalk from 'chalk';
 import dotenv from 'dotenv';
 const res = await isFile('.env');

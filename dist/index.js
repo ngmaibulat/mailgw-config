@@ -1,6 +1,6 @@
 import fsp from 'node:fs/promises';
 import { genConfigs } from './lib.js';
-import { helpGenJson, helpContainers } from './gensh.js';
+import { helpGenJson } from './gensh.js';
 import './init.js';
 //mkdir config
 await fsp.mkdir('config');
@@ -12,4 +12,3 @@ await fsp.mkdir('log');
 genConfigs();
 //show help
 helpGenJson();
-helpContainers();
