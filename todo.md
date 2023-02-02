@@ -1,8 +1,1 @@
--   check .env file exists
--   load .env
--   generate config
--   install: podman, cockpit
--   pull container
--   show command to run podman container
--   remove configuration scripts from mailgw project
 -   deprecate mailgw npm package

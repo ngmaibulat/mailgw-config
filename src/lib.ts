@@ -1,17 +1,17 @@
-import { writeFileSync } from "fs";
+import { writeFileSync } from 'fs'
 
 const files = [
-    "deny_includes_uuid",
-    "host_list",
-    "me",
-    "smtp.ini",
-    "smtpgreeting",
-];
+    'deny_includes_uuid',
+    'host_list',
+    'me',
+    'smtp.ini',
+    'smtpgreeting',
+]
 
 export function genLogIni() {
-    const log_level = process.env.LOG_LEVEL;
-    const log_timestamps = process.env.LOG_TIMESTAMPS;
-    const log_format = process.env.LOG_FORMAT;
+    const log_level = process.env.LOG_LEVEL
+    const log_timestamps = process.env.LOG_TIMESTAMPS
+    const log_format = process.env.LOG_FORMAT
 
     const res = `
 [main]
@@ -25,14 +25,14 @@ timestamps=${log_timestamps}
 
 ;  format=default, logfmt, json
 format=${log_format}
-`;
+`
 
-    return res;
+    return res
 }
 
 export function genSmtpIni() {
-    const cpus = process.env.NODEJS_CPU_CORES;
-    const port = process.env.SMTP_PORT;
+    const cpus = process.env.NODEJS_CPU_CORES
+    const port = process.env.SMTP_PORT
 
     const res = `
 ; address to listen on (default: all IPv6 and IPv4 addresses, port 25)
@@ -104,24 +104,24 @@ max_lines=1000
 
 ; replace max_received_count
 max_received=100
-`;
+`
 
-    return res;
+    return res
 }
 
 export function genDenyIncludesUuid() {
-    const value = process.env.DENY_INCLUDES_UUID || "1";
-    return value;
+    const value = process.env.DENY_INCLUDES_UUID || '1'
+    return value
 }
 
 export function genSmtpName() {
-    const value = process.env.SMTP_RELAY_NAME || "smtp-relay";
-    return value;
+    const value = process.env.SMTP_RELAY_NAME || 'smtp-relay'
+    return value
 }
 
 export function genSmtpGreeting() {
-    const value = process.env.SMTP_GREETING || "NGM Mail Gateway";
-    return value;
+    const value = process.env.SMTP_GREETING || 'NGM Mail Gateway'
+    return value
 }
 
 export function genSmtpForwardIni() {
@@ -132,8 +132,8 @@ port=2525
 connect_timeout=60
 timeout=60
 max_connections=1000
-`;
-    return value;
+`
+    return value
 }
 
 export function genPlugins() {
@@ -146,32 +146,32 @@ headers
 
 #ngmFilterAttach
 
-ngmRoute
-logDelivery
-    `;
+npRoute
+npLogDelivery
+    `
 
-    return value;
+    return value
 }
 
 export function genInternalCmdKey() {
-    return "231699a65eb9474718b3dd8c18108d550f34279fe86aace09dd04f2b11e61da4";
+    return '231699a65eb9474718b3dd8c18108d550f34279fe86aace09dd04f2b11e61da4'
 }
 
 export function genHostList() {
-    const value = process.env.ACCEPTED_DOMAINS || "localhost";
-    const lines = value.replaceAll(",", "\n");
-    const res = lines + "\n";
-    return res;
+    const value = process.env.ACCEPTED_DOMAINS || 'localhost'
+    const lines = value.replaceAll(',', '\n')
+    const res = lines + '\n'
+    return res
 }
 
 export function genConfigs() {
-    writeFileSync("config/log.ini", genLogIni());
-    writeFileSync("config/smtp.ini", genSmtpIni());
-    writeFileSync("config/deny_includes_uuid", genDenyIncludesUuid());
-    writeFileSync("config/me", genSmtpName());
-    writeFileSync("config/smtpgreeting", genSmtpGreeting());
-    writeFileSync("config/smtp_forward.ini", genSmtpForwardIni());
-    writeFileSync("config/plugins", genPlugins());
-    writeFileSync("config/internalcmd_key", genInternalCmdKey());
-    writeFileSync("config/host_list", genHostList());
+    writeFileSync('config/log.ini', genLogIni())
+    writeFileSync('config/smtp.ini', genSmtpIni())
+    writeFileSync('config/deny_includes_uuid', genDenyIncludesUuid())
+    writeFileSync('config/me', genSmtpName())
+    writeFileSync('config/smtpgreeting', genSmtpGreeting())
+    writeFileSync('config/smtp_forward.ini', genSmtpForwardIni())
+    writeFileSync('config/plugins', genPlugins())
+    writeFileSync('config/internalcmd_key', genInternalCmdKey())
+    writeFileSync('config/host_list', genHostList())
 }

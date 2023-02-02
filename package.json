@@ -8,11 +8,15 @@
         "test": "node --test",
         "build": "tsc",
         "build:watch": "tsc -w",
+        "dev": "rm -fr config; rm -fr queue; rm -fr log; node dist/index.js",
+        "start": "node dist/index.js",
         "minor": "git add . ; git commit -a -m minor; git push"
     },
     "author": "Aibulat",
     "license": "MIT",
     "dependencies": {
+        "@aibulat/isfile": "^0.0.3",
+        "chalk": "^5.2.0",
         "dotenv": "^16.0.3",
         "envsub": "^4.1.0"
     },

@@ -1,11 +1,15 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@aibulat/isfile': ^0.0.3
   '@types/node': ^18.11.18
+  chalk: ^5.2.0
   dotenv: ^16.0.3
   envsub: ^4.1.0
 
 dependencies:
+  '@aibulat/isfile': 0.0.3
+  chalk: 5.2.0
   dotenv: 16.0.3
   envsub: 4.1.0
 
@@ -13,6 +17,10 @@ devDependencies:
   '@types/node': 18.11.18
 
 packages:
+
+  /@aibulat/isfile/0.0.3:
+    resolution: {integrity: sha512-17Ojj0GWOTkge19TJeFp+8kx0kA1T8O2Tzrz9ysvlOYpI7K9qkSHsVseWvg2GCZzW8F671Gsoe3oUPTQTmO+oA==}
+    dev: false
 
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
@@ -47,6 +55,11 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+    dev: false
+
+  /chalk/5.2.0:
+    resolution: {integrity: sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: false
 
   /color-convert/2.0.1:
