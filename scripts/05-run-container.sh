@@ -3,9 +3,12 @@
 
 podman rm mailgw
 
-export dir=`pwd`
+mkdir /opt/mailgw
+sudo chown $USER:$USER /opt/mailgw -R
+
 podman run --name mailgw \
- --mount type=bind,source=$dir/config,target=/opt/mailgw/config \
+ --mount type=bind,source=/opt/mailgw/config,target=/opt/mailgw/config \
+ --mount type=bind,source=/opt/mailgw/queue,target=/opt/mailgw/queue \
  -p 2525:2525 \
  -d ngmaibulat/mailgw
 
