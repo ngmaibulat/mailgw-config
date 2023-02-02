@@ -1,6 +1,3 @@
--   check .env file exists
--   load .env
--   generate config
 -   install: podman, cockpit
 -   pull container
 -   show command to run podman container
