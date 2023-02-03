@@ -16,6 +16,7 @@ bash scripts/04-pull-image.sh
 bash scripts/05-run-container.sh
 bash scripts/06-dnat.sh
 bash scripts/07-test.sh
+bash scripts/08-pm2.sh
 ```
 
 ### Test
