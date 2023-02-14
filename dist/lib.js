@@ -148,14 +148,14 @@ export function genHostList() {
     const res = lines + '\n';
     return res;
 }
-export function genConfigs() {
-    writeFileSync('config/log.ini', genLogIni());
-    writeFileSync('config/smtp.ini', genSmtpIni());
-    writeFileSync('config/deny_includes_uuid', genDenyIncludesUuid());
-    writeFileSync('config/me', genSmtpName());
-    writeFileSync('config/smtpgreeting', genSmtpGreeting());
-    writeFileSync('config/smtp_forward.ini', genSmtpForwardIni());
-    writeFileSync('config/plugins', genPlugins());
-    writeFileSync('config/internalcmd_key', genInternalCmdKey());
-    writeFileSync('config/host_list', genHostList());
+export function genConfigs(configdir) {
+    writeFileSync(`${configdir}/log.ini`, genLogIni());
+    writeFileSync(`${configdir}/smtp.ini`, genSmtpIni());
+    writeFileSync(`${configdir}/deny_includes_uuid`, genDenyIncludesUuid());
+    writeFileSync(`${configdir}/me`, genSmtpName());
+    writeFileSync(`${configdir}/smtpgreeting`, genSmtpGreeting());
+    writeFileSync(`${configdir}/smtp_forward.ini`, genSmtpForwardIni());
+    writeFileSync(`${configdir}/plugins`, genPlugins());
+    writeFileSync(`${configdir}/internalcmd_key`, genInternalCmdKey());
+    writeFileSync(`${configdir}/host_list`, genHostList());
 }

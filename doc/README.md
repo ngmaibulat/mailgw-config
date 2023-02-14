@@ -6,6 +6,13 @@ cd mailgw-config
 rm -fr .git
 ```
 
+### DotEnv
+
+```bash
+cp example.env .env
+vim .env
+```
+
 ### Run scripts
 
 ```bash
