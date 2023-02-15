@@ -39,7 +39,8 @@ export function lsQueue(dir: string): QueueElement[] {
 export function formatTable(data: QueueElement[]): string {
     const table = new cliTable({
         head: [
-            color.green('Arrival'),
+            color.green('Arrival Date'),
+            color.green('Arrival Time'),
             color.green('Next Attempt'),
             color.green('Attempts'),
             color.green('Age in sec'),
@@ -50,11 +51,12 @@ export function formatTable(data: QueueElement[]): string {
 
     for (const row of data) {
         const arr = [
+            color.yellow(row.dtArrival.toDateString()),
             color.yellow(row.dtArrival.toTimeString()),
             color.yellow(row.dtNextAttempt.toTimeString()),
-            row.attempts,
+            color.red(`${row.attempts}`),
             color.yellow(row.ageSeconds.toString()),
-            color.blue(row.ageHours.toString()),
+            color.red(row.ageHours.toString()),
         ]
         //@ts-ignore
         table.push(arr)

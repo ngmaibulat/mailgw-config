@@ -13,7 +13,7 @@ export function readQueueFile(file) {
     obj.dtQueue.setTime(obj.queue_time);
     return obj;
 }
-export function lsQueueDetails(dir) {
+export function lsQueueDetails(dir, filter) {
     const arr = fs.readdirSync(dir);
     const res = arr.map((item) => {
         const filepath = path.resolve(dir, item);
@@ -24,6 +24,7 @@ export function lsQueueDetails(dir) {
 export function formatDetailsTable(data) {
     const table = new cliTable({
         head: [
+            color.green('Date'),
             color.green('Time'),
             color.green('Domain'),
             color.green('Sender'),
@@ -33,8 +34,9 @@ export function formatDetailsTable(data) {
     });
     for (const row of data) {
         const arr = [
-            row.dtQueue.toLocaleString(),
-            row.domain,
+            color.yellow(row.dtQueue.toDateString()),
+            color.yellow(row.dtQueue.toTimeString()),
+            color.yellow(row.domain),
             color.yellow(row.mail_from.original),
             color.yellow(row.rcpt_to[0].original),
         ];

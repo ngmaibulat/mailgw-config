@@ -4,7 +4,7 @@ import path from 'node:path'
 import cliTable from 'cli-table3'
 import color from '@colors/colors'
 
-import { MailMetadata } from './types.js'
+import { Filter, MailMetadata } from './types.js'
 
 export function readQueueFile(file: string): MailMetadata {
     const data = fs.readFileSync(file)
@@ -20,7 +20,7 @@ export function readQueueFile(file: string): MailMetadata {
     return obj as MailMetadata
 }
 
-export function lsQueueDetails(dir: string): MailMetadata[] {
+export function lsQueueDetails(dir: string, filter: Filter): MailMetadata[] {
     const arr = fs.readdirSync(dir)
     const res = arr.map((item) => {
         const filepath = path.resolve(dir, item)
@@ -33,6 +33,7 @@ export function lsQueueDetails(dir: string): MailMetadata[] {
 export function formatDetailsTable(data: MailMetadata[]): string {
     const table = new cliTable({
         head: [
+            color.green('Date'),
             color.green('Time'),
             color.green('Domain'),
             color.green('Sender'),
@@ -43,8 +44,9 @@ export function formatDetailsTable(data: MailMetadata[]): string {
 
     for (const row of data) {
         const arr = [
-            row.dtQueue.toLocaleString(),
-            row.domain,
+            color.yellow(row.dtQueue.toDateString()),
+            color.yellow(row.dtQueue.toTimeString()),
+            color.yellow(row.domain),
             color.yellow(row.mail_from.original),
             color.yellow(row.rcpt_to[0].original),
         ]

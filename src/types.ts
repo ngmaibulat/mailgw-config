@@ -33,3 +33,13 @@ export type MailMetadata = {
     notes: any
     uuid: string
 }
+
+export type Filter = {
+    src: string
+    dst: string
+    domain: string
+    minage: number
+    minattempts: number
+    datefrom: Date | false
+    dateto: Date | false
+}
