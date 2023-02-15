@@ -84,8 +84,3 @@ function getTimeDiffHours(past: number) {
 
     return Math.floor(hours)
 }
-
-const res = lsQueue('./queue')
-const tbl = formatTable(res)
-
-console.log(tbl)
