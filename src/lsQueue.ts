@@ -6,17 +6,7 @@ import fs from 'node:fs'
 import cliTable from 'cli-table3'
 import color from '@colors/colors'
 
-export type QueueElement = {
-    dtArrival: Date
-    dtNextAttempt: Date
-    attempts: Number
-    pid: Number
-    uniq: String
-    counter: Number
-    host: String
-    ageSeconds: Number
-    ageHours: Number
-}
+import { QueueElement } from './types.js'
 
 export function parseFilename(filename: string): QueueElement {
     if (!filename) {
