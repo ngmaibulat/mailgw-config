@@ -32,6 +32,8 @@ export type MailMetadata = {
     mail_from: MailFrom
     notes: any
     uuid: string
+    filename: string
+    fileinfo: QueueElement
 }
 
 export type Filter = {

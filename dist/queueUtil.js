@@ -1,3 +1,4 @@
+import fs from 'node:fs/promises';
 import { lsQueue, formatTable } from './queueMetadata.js';
 import { lsQueueDetails, formatDetailsTable } from './queueDetails.js';
 import { getFilter } from './queueFilter.js';
@@ -6,7 +7,6 @@ import { getArgs } from './queueArgs.js';
 //with list of files: copy, move, run command with a template: somecmd -somearg $fname $hash $size $createdate
 //show statistics
 //filter
-//output filtered filenames to a files
 //perform action of filelist
 //!flush items
 //separate NPM package
@@ -26,3 +26,17 @@ const data = lsQueueDetails(dir, filter);
 const tblDetails = formatDetailsTable(data);
 console.log('\n Details:');
 console.log(tblDetails);
+if (args.out && typeof args.out == 'string') {
+    //Output list of files to a file
+    console.log('\nOutput to file:', args.out);
+    const filenames = data.map((item) => item.filename);
+    const content = filenames.join('\n');
+    // console.log(content)
+    try {
+        await fs.writeFile(args.out, content + '\n');
+    }
+    catch (err) {
+        console.error('Error writing to file:', args.out);
+        process.exit(1);
+    }
+}

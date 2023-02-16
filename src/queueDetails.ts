@@ -6,6 +6,8 @@ import color from '@colors/colors'
 
 import { Filter, MailMetadata } from './types.js'
 
+import { parseFilename } from './queueMetadata.js'
+
 import {
     tstampToDate,
     getTimeDiffSeconds,
@@ -22,6 +24,9 @@ export function readQueueFile(file: string): MailMetadata {
 
     obj.dtQueue = new Date()
     obj.dtQueue.setTime(obj.queue_time)
+
+    obj.filename = file
+    obj.fileinfo = parseFilename(file)
 
     return obj as MailMetadata
 }

@@ -31,6 +31,10 @@ const argOptions = {
         dateto: {
             type: 'string',
         },
+        out: {
+            type: 'string',
+            short: 'o',
+        },
         help: {
             type: 'boolean',
             short: 'h',

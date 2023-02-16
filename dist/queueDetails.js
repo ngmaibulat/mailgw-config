@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import cliTable from 'cli-table3';
 import color from '@colors/colors';
+import { parseFilename } from './queueMetadata.js';
 import { getTimeDiffHours, } from './utilTime.js';
 export function readQueueFile(file) {
     const data = fs.readFileSync(file);
@@ -12,6 +13,8 @@ export function readQueueFile(file) {
     const obj = JSON.parse(strVal);
     obj.dtQueue = new Date();
     obj.dtQueue.setTime(obj.queue_time);
+    obj.filename = file;
+    obj.fileinfo = parseFilename(file);
     return obj;
 }
 //Update Here!
