@@ -16,10 +16,7 @@ import { getArgs } from './queueArgs.js';
 const args = getArgs();
 const dir = args.dir;
 const filter = getFilter(args);
-console.log(filter);
-if (filter.src) {
-    console.log('Filtering by src:', filter.src);
-}
+// console.log(filter)
 if (args.meta) {
     const tbl = formatTable(lsQueue(dir));
     console.log('\n Metadata:');

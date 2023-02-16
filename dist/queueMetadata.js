@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import cliTable from 'cli-table3';
 import color from '@colors/colors';
+import { tstampToDate, getTimeDiffSeconds, getTimeDiffHours, } from './utilTime.js';
 export function parseFilename(filename) {
     if (!filename) {
         throw new Error('No filename provided');
@@ -51,21 +52,4 @@ export function formatTable(data) {
         table.push(arr);
     }
     return table.toString();
-}
-function tstampToDate(tm) {
-    const dt = new Date();
-    dt.setTime(tm);
-    return dt;
-}
-function getTimeDiffSeconds(past) {
-    const now = new Date().getTime();
-    const diff = now - past;
-    const seconds = diff / 1000;
-    return Math.floor(seconds);
-}
-function getTimeDiffHours(past) {
-    const now = new Date().getTime();
-    const diff = now - past;
-    const hours = diff / (3600 * 1000);
-    return Math.floor(hours);
 }

@@ -1,13 +1,13 @@
 export type QueueElement = {
     dtArrival: Date
     dtNextAttempt: Date
-    attempts: Number
-    pid: Number
+    attempts: number
+    pid: number
     uniq: string
-    counter: Number
+    counter: number
     host: string
-    ageSeconds: Number
-    ageHours: Number
+    ageSeconds: number
+    ageHours: number
 }
 
 export type MailFrom = {
@@ -25,7 +25,7 @@ export type Rcpt = {
 }
 
 export type MailMetadata = {
-    queue_time: Number
+    queue_time: number
     dtQueue: Date
     domain: string
     rcpt_to: Rcpt[]
@@ -39,6 +39,7 @@ export type Filter = {
     dst: string
     domain: string
     minage: number
+    maxage: number
     minattempts: number
     datefrom: Date | false
     dateto: Date | false

@@ -4,6 +4,7 @@ export function getFilter(values) {
         dst: '',
         domain: '',
         minage: 0,
+        maxage: 0,
         minattempts: 0,
         datefrom: false,
         dateto: false,
@@ -14,8 +15,14 @@ export function getFilter(values) {
     if (values.dst) {
         filter.dst = values.dst;
     }
+    if (values.domain) {
+        filter.domain = values.domain;
+    }
     if (values.minage) {
         filter.minage = parseInt(values.minage);
+    }
+    if (values.maxage) {
+        filter.maxage = parseInt(values.maxage);
     }
     if (values.minattempts) {
         filter.minattempts = parseInt(values.minattempts);

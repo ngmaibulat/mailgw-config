@@ -19,6 +19,9 @@ const argOptions = {
         minage: {
             type: 'string',
         },
+        maxage: {
+            type: 'string',
+        },
         minattempts: {
             type: 'string',
         },
@@ -55,7 +58,8 @@ function help() {
     --src: sender address
     --dst: recipient address
     --domain: recipient domain
-    --minage: minimum age
+    --minage: minimum age, in hours
+    --maxage: maximum age, in hours
     --minattempts: minimum attempts
     --datefrom: filter by arrival date/time, starting with
     --dateto: filter by arrival date/time, ending

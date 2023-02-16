@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import cliTable from 'cli-table3';
 import color from '@colors/colors';
+import { getTimeDiffHours, } from './utilTime.js';
 export function readQueueFile(file) {
     const data = fs.readFileSync(file);
     const ln = data.readUInt32BE();
@@ -13,11 +14,66 @@ export function readQueueFile(file) {
     obj.dtQueue.setTime(obj.queue_time);
     return obj;
 }
+//Update Here!
+//Filter items
 export function lsQueueDetails(dir, filter) {
     const arr = fs.readdirSync(dir);
-    const res = arr.map((item) => {
+    const data = arr.map((item) => {
         const filepath = path.resolve(dir, item);
         return readQueueFile(filepath);
+    });
+    const res = data.filter((item) => {
+        //filter by sender
+        if (filter.src) {
+            const re = new RegExp(filter.src);
+            const matched = re.test(item.mail_from.original);
+            if (!matched) {
+                return false;
+            }
+        }
+        //filter by rcpt[0]
+        if (filter.dst) {
+            const re = new RegExp(filter.dst);
+            const matched = re.test(item.rcpt_to[0].original);
+            if (!matched) {
+                return false;
+            }
+        }
+        //filter by domain
+        if (filter.domain) {
+            const re = new RegExp(filter.domain);
+            const matched = re.test(item.domain);
+            if (!matched) {
+                return false;
+            }
+        }
+        if (filter.minage) {
+            const age = getTimeDiffHours(item.queue_time);
+            const matched = filter.minage <= age;
+            if (!matched) {
+                return false;
+            }
+        }
+        if (filter.maxage) {
+            const age = getTimeDiffHours(item.queue_time);
+            const matched = age <= filter.maxage;
+            if (!matched) {
+                return false;
+            }
+        }
+        if (filter.minattempts) {
+            console.error('Filter by --minattempts not yet implemented');
+            process.exit(10);
+        }
+        if (filter.datefrom) {
+            console.error('Filter by --datefrom not yet implemented');
+            process.exit(10);
+        }
+        if (filter.dateto) {
+            console.error('Filter by --dateto not yet implemented');
+            process.exit(10);
+        }
+        return item;
     });
     return res;
 }

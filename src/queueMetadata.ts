@@ -8,6 +8,12 @@ import color from '@colors/colors'
 
 import { QueueElement } from './types.js'
 
+import {
+    tstampToDate,
+    getTimeDiffSeconds,
+    getTimeDiffHours,
+} from './utilTime.js'
+
 export function parseFilename(filename: string): QueueElement {
     if (!filename) {
         throw new Error('No filename provided')
@@ -63,26 +69,4 @@ export function formatTable(data: QueueElement[]): string {
     }
 
     return table.toString()
-}
-
-function tstampToDate(tm: number) {
-    const dt = new Date()
-    dt.setTime(tm)
-    return dt
-}
-
-function getTimeDiffSeconds(past: number) {
-    const now = new Date().getTime()
-    const diff = now - past
-    const seconds = diff / 1000
-
-    return Math.floor(seconds)
-}
-
-function getTimeDiffHours(past: number) {
-    const now = new Date().getTime()
-    const diff = now - past
-    const hours = diff / (3600 * 1000)
-
-    return Math.floor(hours)
 }
