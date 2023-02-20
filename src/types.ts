@@ -46,3 +46,14 @@ export type Filter = {
     datefrom: Date | false
     dateto: Date | false
 }
+
+export type ArgsSendMail = {
+    file: string
+    list: string
+    host: string
+    port: number
+    user?: string
+    pass?: string
+    env: boolean
+    debug: boolean
+}

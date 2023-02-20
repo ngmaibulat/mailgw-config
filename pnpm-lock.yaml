@@ -4,20 +4,24 @@ specifiers:
   '@aibulat/isfile': ^0.0.3
   '@colors/colors': ^1.5.0
   '@types/node': ^18.11.18
+  '@types/nodemailer': ^6.4.7
   address-rfc2821: ^2.0.1
   chalk: ^5.2.0
   cli-table3: ^0.6.3
   dotenv: ^16.0.3
   envsub: ^4.1.0
+  nodemailer: ^6.9.1
 
 dependencies:
   '@aibulat/isfile': 0.0.3
   '@colors/colors': 1.5.0
+  '@types/nodemailer': 6.4.7
   address-rfc2821: 2.0.1
   chalk: 5.2.0
   cli-table3: 0.6.3
   dotenv: 16.0.3
   envsub: 4.1.0
+  nodemailer: 6.9.1
 
 devDependencies:
   '@types/node': 18.11.18
@@ -36,7 +40,12 @@ packages:
 
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
-    dev: true
+
+  /@types/nodemailer/6.4.7:
+    resolution: {integrity: sha512-f5qCBGAn/f0qtRcd4SEn88c8Fp3Swct1731X4ryPKqS61/A3LmmzN8zaEz7hneJvpjFbUUgY7lru/B/7ODTazg==}
+    dependencies:
+      '@types/node': 18.11.18
+    dev: false
 
   /address-rfc2821/2.0.1:
     resolution: {integrity: sha512-1NclacuEtuULj6yuwFSxDegXZAaW3h37j8OgYQ/ApqhY3KehWF9RQmo1lg9RL2dc6r1wlJMQj5pM7xgmhR0bKw==}
@@ -448,6 +457,11 @@ packages:
 
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+    dev: false
+
+  /nodemailer/6.9.1:
+    resolution: {integrity: sha512-qHw7dOiU5UKNnQpXktdgQ1d3OFgRAekuvbJLcdG5dnEo/GtcTHRYM7+UfJARdOFU9WUQO8OiIamgWPmiSFHYAA==}
+    engines: {node: '>=6.0.0'}
     dev: false
 
   /object-inspect/1.12.3:
