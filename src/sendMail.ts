@@ -26,10 +26,18 @@ console.log(options)
 
 const transporter = nodemailer.createTransport(options)
 
+const envelope = {
+    from: 'sender@example.com',
+    to: ['recipient@example.com'],
+}
+
+const raw = `From: sender@example.com
+To: recipient@example.com
+Subject: greetings
+
+Salam Aleikum!`
+
+let message = { envelope, raw }
+
 // send email
-await transporter.sendMail({
-    from: data.mail_from.original,
-    to: data.rcpt_to[0].original,
-    subject: 'Test Email Subject',
-    html: '<h1>Example HTML Message Body</h1>',
-})
+await transporter.sendMail(message)
