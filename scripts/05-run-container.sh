@@ -3,6 +3,18 @@
 
 podman rm mailgw
 
+### Host Net
+
+podman run --name mailgw \
+ --net=host \
+ --mount type=bind,source=/opt/mailgw/config,target=/opt/mailgw/config \
+ --mount type=bind,source=/opt/mailgw/queue,target=/opt/mailgw/queue \
+ --mount type=bind,source=/opt/mailgw/log,target=/opt/mailgw/log \
+ -d ngmaibulat/mailgw
+
+
+### Default Net
+
 podman run --name mailgw \
  --mount type=bind,source=/opt/mailgw/config,target=/opt/mailgw/config \
  --mount type=bind,source=/opt/mailgw/queue,target=/opt/mailgw/queue \
