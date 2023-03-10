@@ -1,6 +1,8 @@
 
-### Run Container
+### Stop Previous Container
 
+pm2 stop mailgw
+podman stop mailgw
 podman rm mailgw
 
 ### Host Net
