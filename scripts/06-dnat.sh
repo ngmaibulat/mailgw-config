@@ -12,7 +12,7 @@ sudo nft -f /etc/nftables.conf
 # sudo nft 'add rule nat prerouting tcp dport 25 dnat to 127.0.0.1:2525'
 
 sudo nft list ruleset | grep 2525
-sudo nft list ruleset | grep "tcp dport .* dnat"
+sudo nft list ruleset | grep "tcp dport"
 
 
 sudo ufw allow 25/tcp

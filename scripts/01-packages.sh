@@ -1,7 +1,4 @@
 ### Install
 
-sudo apt install nala
-sudo nala install vim tcpdump swaks
-sudo nala install podman
-sudo nala install cockpit
-sudo nala install cockpit-podman
+sudo apt install -y nala
+sudo nala install -y vim tcpdump swaks podman cockpit cockpit-podman nodejs npm

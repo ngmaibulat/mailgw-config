@@ -1,4 +1,4 @@
-sudo nala install nodejs npm
+
 
 sudo npm install -g n
 
